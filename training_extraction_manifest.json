@@ -1,0 +1,41 @@
+{
+  "output": "src/gate_training.py",
+  "output_sha256": "0aeba46481c033061644f4c64bce38d5f114667ce1509cf1342bbab7e75545cb",
+  "inputs": [
+    {
+      "path": "scripts/pipeline/train_transfer_distilled_residual_stage_a.py",
+      "sha256": "4f84cc5d132f3112a59763f3e09a5826a3c602c1650ec37d83a9524c5b0d6629",
+      "definitions": [
+        "TRAINING_SEEDS",
+        "META_FOLDS",
+        "META_SEED",
+        "TRAINING_EPOCHS",
+        "LEARNING_RATE",
+        "DETERMINISM_POLICY",
+        "configure_torch_determinism",
+        "resolve_training_device",
+        "_mean_rank_predictions",
+        "grouped_oof_predictions"
+      ]
+    },
+    {
+      "path": "scripts/pipeline/run_candidate_gated_top10_ranking.py",
+      "sha256": "2f185b8b7c29be37f819672f43140ff69241d600d505059e4b7c9a557a08d1b6",
+      "definitions": [
+        "CandidateGateConfig",
+        "RankingMetrics",
+        "frozen_candidate_gate_grid",
+        "_model_complexity",
+        "select_candidate_gate_config",
+        "active_backbone_rank_data",
+        "mean_rank_ensemble",
+        "ranking_metrics",
+        "_validate_training_arrays",
+        "_validate_prediction_arrays",
+        "fit_candidate_gate",
+        "predict_candidate_gate"
+      ]
+    }
+  ],
+  "transformation": "Unchanged definition source segments; portable imports only."
+}

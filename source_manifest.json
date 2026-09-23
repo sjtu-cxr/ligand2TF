@@ -1,0 +1,84 @@
+{
+  "scope": "V66 main-model core source candidate, not full benchmark reproduction",
+  "files": [
+    {
+      "path": "src/benchmark_agnostic_transfer.py",
+      "source_sha256": "2dbf38089d2efe8674d4d8c7e3cc68cf84e4b0d3551515914155563756887726"
+    },
+    {
+      "path": "src/candidate_gated_top10.py",
+      "source_sha256": "231907774d0381be8158c3bbc5cec4cc5f6ef8a6550422bb1254ab85b708df4a"
+    },
+    {
+      "path": "src/fit_candidate_mask.py",
+      "source_sha256": "e5491139813f490044edf79f90b749da37b581106d313ba13f97353d17cc0e8c"
+    },
+    {
+      "path": "src/transfer_distilled_residual.py",
+      "source_sha256": "8d8a56c94b459bb02a8b11d3dc54ddd17a6b1a00c19b58306ce151fd819a0131"
+    },
+    {
+      "path": "src/unified_bscd_residual.py",
+      "source_sha256": "dbe8109694fc6da4cb4ecdf6b68dcc743c1670a19ed72beae48f78d87982d6cf"
+    },
+    {
+      "path": "src/unified_chemical_transfer.py",
+      "source_sha256": "9148dbc4777dc388714298446fc1f1abe120b758934a9c080198e0a6e4790829"
+    },
+    {
+      "path": "src/unified_dstar_data.py",
+      "source_sha256": "5945b5126429077003c24b73425bd7af39d4ae967f1fd980573d229a4b27c841"
+    },
+    {
+      "path": "src/unified_dstar_ensemble.py",
+      "source_sha256": "48189365dff875aaf70407ba7f04f6a24f99c312cb15bff73faaf61c198d7c78"
+    },
+    {
+      "path": "src/unified_dstar_model.py",
+      "source_sha256": "4d10376fd6d01989d05c9baf0c4c8b8af174a46715bd96f2fbf25ad9ea68736d"
+    },
+    {
+      "path": "src/unified_dstar_training.py",
+      "source_sha256": "ba4513ffff8c133079586a233cc0beff68f2bace2ef8fceb43c05216f78cf740"
+    },
+    {
+      "path": "src/unified_transfer_first_routing.py",
+      "source_sha256": "31a6723e89cc763deb8185ad9d002ab8de83338f5646dfbfd1c3a61ddc30e81e"
+    },
+    {
+      "path": "scripts/pipeline/audit_transfer_distilled_stage_a_inputs.py",
+      "source_sha256": "1021a5157101490e5cbe68cba037decdb72c8b385e4595e6114416ebc94b8ef2"
+    },
+    {
+      "path": "tests/test_candidate_gated_top10.py",
+      "source_sha256": "2d54bb543c5bdc97b95df62d7d2328745096451bd5da1606bacc1881dfb49ef5"
+    },
+    {
+      "path": "tests/test_unified_dstar_model.py",
+      "source_sha256": "d04975ce9f5a6f52346fdb50ddfbd9a7fdcb7261c4951e358fe9de52e438c385"
+    },
+    {
+      "path": "tests/test_unified_dstar_data.py",
+      "source_sha256": "cf98f7f586dfdedba23b4daf20b7d44170b1d695867cf37bc35ac2ab41add4dc"
+    },
+    {
+      "path": "tests/test_unified_dstar_training.py",
+      "source_sha256": "d4659b426d31b2e43ffdbe3a1523393d81f8eb28564c71efb122047d5791bd40"
+    },
+    {
+      "path": "tests/test_unified_chemical_transfer.py",
+      "source_sha256": "ec2a09cd5e56d7a8496d254f21a88679001e0f92f73393cd196668fcd99861c8"
+    },
+    {
+      "path": "tests/test_benchmark_agnostic_transfer.py",
+      "source_sha256": "84fec4b2513403489a669a93f1ddf27f4e03240d3657fbd69d6f6e44db007583"
+    },
+    {
+      "path": "tests/test_fit_candidate_mask.py",
+      "source_sha256": "fcb68365849f801ddb1f362f787e38c982a7ec688f4d67734fb357df46a4cc3b"
+    }
+  ],
+  "modifications": [
+    "External trusted-source root removed from the copied audit module."
+  ]
+}

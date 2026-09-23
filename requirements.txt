@@ -1,0 +1,6 @@
+# Versions present in the verification environment; not a cross-platform lock.
+numpy==1.26.4
+pandas==2.3.3
+torch==2.12.1
+rdkit==2022.9.5
+pytest==9.1.1
