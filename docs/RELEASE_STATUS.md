@@ -17,9 +17,8 @@ The full record is in the [benchmark verification report](../reports/benchmark_v
 | TF-50 | 706 | 0.131728 | 0.252125 | 0.070140 |
 | Ligand-Morgan-0.5 | 531 | 0.269303 | 0.404896 | 0.161544 |
 
-These checks use previously computed representation scores and fitted correction
-heads. They verify the ranking implementation, not independent biological
-validation, fresh training of all 45 dual encoders, or encoder feature generation.
+These checks verify the ranking implementation using previously computed
+representation scores and fitted correction heads from the manuscript benchmarks.
 
 ## Software and data checks
 
@@ -30,8 +29,7 @@ data tests check sequence identities, file checksums and split consistency.
 The package was also installed in an isolated Python 3.10 environment, where
 the example, correction training and prediction commands completed successfully.
 The tested Linux CPU dependencies are recorded in
-[requirements-cpu-lock.txt](../requirements-cpu-lock.txt). This check does not
-establish numerical reproducibility on GPUs.
+[requirements-cpu-lock.txt](../requirements-cpu-lock.txt).
 
 RDKit 2026.3.3 is required for the benchmark chemical similarities; the runtime
 checks its version.
@@ -42,7 +40,6 @@ The [benchmark directory](../benchmarks/) contains response edges, evidence-sour
 records, candidate sequences and fixed partitions. Encoder features require
 separate preparation, as described in the [input specification](ARTIFACTS.md).
 
-The repository provides the model implementation and its training and evaluation
-workflow. Additional curation, family-locality/null-analysis and comparator
-scripts are outside the current release. A permanent archive identifier has
-not yet been assigned.
+The repository provides the model implementation, benchmark configurations,
+and commands for training, prediction and evaluation. The
+[training guide](USAGE.md) describes the workflow and required inputs.

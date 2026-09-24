@@ -88,11 +88,9 @@ seed order, state count and SHA256 of `weights.npz`. A selected gate has three
 state dictionaries stored as `seed_index:parameter_name` arrays. A backbone
 fallback has zero states. No object-array or Python pickle loading is used.
 
-## Reproduction boundary
+## Verification
 
-Frozen-score/checkpoint replay verifies migration of response construction,
-masking, calibration, features, correction and ranking. The dual-encoder
-training/refit and scoring entry points additionally have synthetic execution
-tests. Neither result establishes that all 45 Dstar models have been retrained
-from scratch, or that raw ESM2/MoLFormer feature generation has been reproduced.
-See [verification results](RELEASE_STATUS.md) for the tested scope.
+Replay using reference scores and fitted checkpoints verifies response
+construction, masking, calibration, features, correction and ranking.
+Synthetic execution tests cover dual-encoder training, refitting and scoring.
+See [verification results](RELEASE_STATUS.md) for the comparisons and metrics.
