@@ -53,7 +53,7 @@ matched, and every reconstructed 32-feature tensor matched its reference hash.
 Final target ranks also matched the previously frozen per-query result table.
 All five channels' H@10, H@50 and MRR matched the manuscript metric archive
 within absolute tolerance 1e-12. The machine-readable record is
-[v66_verification.json](../reports/v66_verification.json).
+[benchmark verification report](../reports/benchmark_verification.json).
 
 | Split | Queries | Final H@10 | Final H@50 | Final MRR |
 |---|---:|---:|---:|---:|
@@ -72,7 +72,8 @@ the migration does not silently repair or relabel the dataset.
   regenerate ESM2/MoLFormer features or retrain all 45 dual encoders.
 - Source data, split manifests, feature caches and checkpoints remain local;
   a reader cannot reproduce manuscript metrics from Git alone yet.
-- Public artifact hosting, redistribution review and a source license still
-  require author decisions. No download URL or license has been invented.
+- Pretrained weights will not be distributed. Public benchmark data access,
+  data redistribution review and a source license remain unresolved; users
+  must train their own weights. No download URL or license has been invented.
 - The GitHub repository remains private. Authentication files and private
   verification inputs are excluded from version control.

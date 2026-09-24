@@ -1,4 +1,4 @@
-# Running the frozen V66 model
+# Training and using ligand2TF
 
 ## Installation
 

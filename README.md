@@ -1,73 +1,127 @@
 # ligand2TF
 
-Prioritize ligand-responsive prokaryotic transcription factors by combining
-protein- and ligand-side response evidence with molecular representations.
+ligand2TF ranks candidate prokaryotic transcription factors for a query ligand
+by integrating known ligand-response relationships with molecular representations.
+It is designed for candidate prioritization when functional response evidence is
+sparse and unevenly distributed across the candidate protein library.
 
-This repository implements the V66 candidate-level gated model used in the
-manuscript. It reconstructs fold-local response neighborhoods, masks known
-fitting responders, builds the availability-aware backbone and 32 correction
-features, and ranks the active protein library. The dual encoder uses
-Architecture B with frozen ESM2-650M and MoLFormer features.
+The repository provides the model implementation, training and evaluation
+commands, model configurations, and a runnable synthetic example. Pretrained
+ligand2TF weights are not distributed; users train the model with their prepared
+data and features.
 
-The repository remains **private** while the external data/weight archive and
-source license are prepared. Cloning it does not download V66 data or weights.
+## Method overview
 
-## Install and try
+ligand2TF combines three sources of information:
 
-Python 3.10 is required. Install and run a small synthetic workflow:
+- **Protein-side response transfer:** sequence similarity to proteins with a
+  known response to the query ligand.
+- **Ligand-side response transfer:** chemical similarity to ligands with a
+  known response for the candidate transcription factor.
+- **Molecular representations:** a dual encoder trained on fixed protein and
+  ligand features to score candidate ligand–protein pairs.
+
+An evidence-aware backbone combines the available signals, and a learned
+candidate-level correction refines the ranking. The representation channel
+provides a score even when neither transfer channel has a response witness.
+Protein features use ESM2-650M; ligand inputs include MoLFormer embeddings,
+Morgan fingerprints and descriptors for supported ions.
+
+For each query, the model ranks eligible proteins in the supplied candidate
+library. Known responders in the fitting data are excluded from that ranking.
+Predictions prioritize candidates for follow-up; they do not establish ligand
+binding or a regulatory mechanism.
+
+## Installation
+
+Use **Python 3.10**. From a local clone of this repository:
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install .
-ligand2tf example --output data/example
-ligand2tf train-gate --bundle data/example/validation/bundle.json --output data/example/head --smoke
-ligand2tf predict --bundle data/example/test/bundle.json --checkpoint data/example/head --output data/example/ranks.tsv
 ```
 
-The example checks execution, not biological prediction quality. Omit --smoke
-for formal 30-epoch gate training. **RDKit 2026.3.3 is locked:** older versions
-can change Morgan similarities and final rankings. Use the release factory
-and configuration, not historical defaults of the low-level model classes.
+For the tested Linux CPU environment, a resolved dependency list is available in
+[requirements-cpu-lock.txt](requirements-cpu-lock.txt). Installation options are
+described in the [usage guide](docs/USAGE.md#installation).
 
-## Workflows
+RDKit **2026.3.3** is required for the chemical-similarity calculations. The
+package specifies its dependencies in [pyproject.toml](pyproject.toml).
 
-- prepare-protein: build the fixed-order identity/coverage cache from MMseqs.
-- train-dstar: select on validation data, then refit on train + validation.
-- score-dstar: generate candidate scores from explicit features and weights.
-- bundle: align three seed-score archives with a fitting response graph.
-- train-gate: grouped out-of-fold head selection and final head fitting.
-- predict / evaluate: rank candidates or compute query-level metrics.
-- verify: compare migrated features, scores and ranks with frozen references.
+## Quick start
 
-See [usage](docs/USAGE.md) for commands and the distinction between
-training-only validation weights and refitted test weights. See
-[artifact contracts](docs/ARTIFACTS.md) for schemas, provenance, and
-local conversion of existing trusted feature caches.
-
-## Verification scope
-
-Unit tests and synthetic workflows are separate from frozen V66 replay.
-The latter reconstructs response evidence and features from the fitting graph
-and fixed molecular similarities, applies original gate weights to cached
-Dstar scores, and compares all active candidate ranks. It does **not** retrain
-all 45 dual encoders or regenerate ESM2/MoLFormer features. Current results
-are in [release status](docs/RELEASE_STATUS.md).
+Run a small synthetic example without downloading biological data or pretrained
+ligand2TF weights:
 
 ```bash
-python -m pip install 'pytest==9.1.1'
+ligand2tf example --output data/example
+ligand2tf train-gate --bundle data/example/validation/bundle.json --output data/example/head --smoke
+ligand2tf predict --bundle data/example/test/bundle.json --checkpoint data/example/head --output data/example/ranks.tsv --top-k 10
+ligand2tf evaluate --bundle data/example/test/bundle.json --checkpoint data/example/head --output data/example/metrics.tsv
+```
+
+The example supplies synthetic response evidence and representation scores.
+It trains the ranking correction for one epoch, writes the top ten candidates
+per query, and evaluates their ranks. It demonstrates the interface, not
+biological performance or end-to-end dual-encoder training.
+
+The prediction file is a tab-separated table containing the query identifier,
+candidate sequence identifier, rank, model score, and indicators of whether
+protein-side and ligand-side transfer evidence is available. Lower ranks indicate
+higher priority; scores are not calibrated response probabilities.
+
+Output destinations must be new. Choose different paths when repeating the
+example. Run `ligand2tf --help` or `ligand2tf <command> --help` for command options.
+
+## Training and prediction with biological data
+
+Prepare ligand-response pairs, a candidate sequence library, protein similarities,
+and fixed protein/ligand features. The [input specification](docs/ARTIFACTS.md)
+defines the required fields and array dimensions. Features must be supplied
+separately; the package does not generate ESM2 or MoLFormer embeddings from raw
+sequences or molecules.
+
+The [training and prediction guide](docs/USAGE.md#real-fold-workflow) explains how
+to train the dual encoder, generate candidate scores, assemble response-evidence
+bundles, and fit the ranking correction. It distinguishes validation-stage
+models from models refitted on training and validation data, keeping test
+responses out of fitting and model selection.
+
+Prediction requires prepared features and locally trained weights; held-out
+response labels are needed only for evaluation. Model settings and benchmark
+selection records are provided in [configs/](configs/). Benchmark-specific
+selections should not be treated as parameters selected for a new dataset.
+
+## Evaluation and reproducibility
+
+The evaluation protocols assess held-out response edges, held-out protein
+sequence components, and held-out ligand chemical components. Performance is
+measured by the rank of the highest-ranked known responder, using Hit@10,
+Hit@50 and mean reciprocal rank.
+
+The [numerical verification report](reports/benchmark_verification.json) records
+agreement with the reference implementation across all 15 benchmark folds.
+This checks inference from stored representation scores and trained correction
+weights; it is not a from-scratch retraining result. Verification details are
+available in the [technical validation record](docs/RELEASE_STATUS.md).
+
+To run the software tests:
+
+```bash
+python -m pip install '.[test]'
 python -m pytest tests -q
 ```
 
-## Layout
+## Data and model availability
 
-src/ contains model and workflow code, configs/ the locked model/fold settings,
-tests/ executable checks, and tools/ maintainer-only extraction utilities.
-Normal package use does not require the original research project.
-Extraction manifests record reference definitions and hashes; source_manifest.json
-is an archival record of the initial v0.1 extraction.
+This repository contains source code, configurations, documentation and tests.
+It does not distribute pretrained ligand2TF weights, the biological benchmark
+datasets, feature caches or third-party encoder assets. The synthetic example
+is available directly through the command line; reproducing the manuscript
+benchmarks additionally requires the corresponding data, splits and features.
 
-## Availability
+## Citation and license
 
-Repository: [sjtu-cxr/ligand2TF](https://github.com/sjtu-cxr/ligand2TF).
-No open-source license or public data DOI is asserted at this stage. Dataset,
-third-party encoder and checkpoint redistribution terms need review before
-public release. Credentials, research logs and manuscript files are excluded.
+A manuscript citation will be added when a citable record is available.
+No software license has yet been assigned to this repository.
