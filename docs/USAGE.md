@@ -22,12 +22,10 @@ The CPU lock was checked in a fresh virtual environment without inherited
 site packages. CUDA installation and numerical reproducibility on GPUs are
 not certified by that CPU installation check.
 
-RDKit **2026.3.3** is part of the numerical protocol, not an optional version
-preference. RDKit 2022.9.5 changed chemical-transfer values in three queries
-of Random-edge fold 0 in the migration audit. The runtime rejects an incorrect
-RDKit version. Do not rely on defaults of the historical low-level model class;
-the release factory loads Architecture B / 1280-dimensional ESM2-650M inputs
-from `configs/v66.json`.
+RDKit **2026.3.3** is required to reproduce the benchmark chemical similarities.
+The runtime checks this version. The model factory loads the manuscript
+configuration, including 1280-dimensional ESM2-650M inputs, from
+`configs/model.json`.
 
 ## Small runnable example
 
@@ -44,11 +42,10 @@ one epoch and marks its checkpoint as nonformal; omit it for the frozen
 
 ## Real fold workflow
 
-The release takes explicit input artifacts rather than searching a research
-filesystem. See [artifact contracts](ARTIFACTS.md) for schemas and availability.
+Input formats are described in [the input specification](ARTIFACTS.md).
 
-1. Prepare fixed normalized `train.tsv`, `val.tsv`, and `test.tsv` and a
-   deduplicated candidate library. Never reconstruct splits from case studies
+1. Use the fixed `train.tsv`, `val.tsv`, and `test.tsv` files in
+   [benchmarks/](../benchmarks/) and its deduplicated candidate library. Never reconstruct splits from case studies
    or select parameters on outer-test responses.
 2. Prepare frozen ESM2-650M / MoLFormer embeddings, Morgan fingerprints and ion
    descriptors as `features.npz`. Feature generation is distinct from the
@@ -107,20 +104,10 @@ Do not fit the gate on outer-test labels. Its feature scaler/ranks must use
 the query-specific active library, after masking fitting responders. Labels
 are optional for prediction; they are required for training and evaluation.
 
-## Frozen migration verification
+## Verification
 
-The maintainer exporter requires the original trusted research environment
-(which has additional historical dependencies, including LightGBM). It is
-not a dependency of installed prediction or training:
-
-```bash
-python tools/export_reference_bundles.py --reference-root /path/to/research --output data/verification_v66
-ligand2tf verify --bundles data/verification_v66 --output reports/verification.json
-```
-
-The exporter runs each fold in a separate process. The verifier compares the
-complete 32-feature tensor, TP/TL/D*/B/F scores and active candidate ranks,
-published final target ranks, and five-fold query-weighted H@10/H@50/MRR.
-Frozen-score replay does not prove that retraining on every hardware/library
-combination will reproduce identical weights, nor does it regenerate raw
-pretrained-encoder features. These are separately reported verification scopes.
+[Verification results](RELEASE_STATUS.md) summarize comparisons with the
+manuscript predictions across all 15 benchmark folds. These checks cover
+feature construction, channel scores, candidate rankings and retrieval metrics.
+They use previously computed representation scores and fitted correction heads;
+they are distinct from retraining the dual encoder or generating encoder features.

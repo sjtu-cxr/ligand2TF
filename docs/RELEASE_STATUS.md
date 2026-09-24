@@ -1,59 +1,15 @@
-# V66 implementation release status
+# Verification results
 
-## Implemented in v0.2
+## Benchmark prediction checks
 
-- Locked Architecture B / ESM2-650M settings, 32-feature order, three seeds,
-  45 selected training epochs and 15 frozen gate selections.
-- Portable fold-local protein/chemical response evidence, active-candidate
-  masking, Dstar calibration, backbone and candidate-gate correction.
-- Explicit dual-encoder validation selection and train-plus-validation refit,
-  separate validation/refit weight exports, and candidate-library scoring.
-- Grouped validation-only gate selection/refitting; ranking and evaluation CLI.
-- Safe numeric NPZ input contracts, checksums, package installation and a
-  self-contained synthetic example. Normal use needs no research-workspace import.
+Predictions were compared with the manuscript results across all 15 folds
+and 1,995 query episodes. Protein-side transfer, ligand-side transfer, the
+dual encoder, the backbone and the final ranker had identical scores and
+active-candidate ranks. The maximum score difference was 0.0, and all
+32-feature tensors matched their reference checksums. H@10, H@50 and MRR
+matched within an absolute tolerance of 1e-12.
 
-The initial v0.1 extraction was not a complete executable release. Its broad
-research audit module has been replaced with three unchanged grouped-validation
-helpers; the original remains in Git history and in the untouched research tree.
-
-## Verification on 2026-09-24
-
-Fresh source test run, with PYTHONPATH unset: **146 passed, 3 skipped**. The
-skips are two legacy tests that expect original dataset paths and one CUDA test.
-New portable real-data replay is checked separately, not counted as a skipped
-legacy test. Synthetic tests exercise training/refitting and scoring, not
-biological accuracy or convergence of all formal training runs.
-
-A wheel was installed in a fresh Python 3.10 virtual environment without
-inherited packages. From outside the repository, the installed CLI completed
-example generation, gate training and prediction. Import locations were checked
-inside that environment. Its Linux CPU dependency set is recorded in
-requirements-cpu-lock.txt; GPU reproducibility has not been certified.
-
-Source comparison confirmed 20 extracted response-pipeline definitions and
-16 gate-training definitions are unchanged, along with source/output hashes.
-The portable feature converter successfully loaded the existing trusted caches
-and produced a non-pickled pack for 552 ligand keys and 6,457 candidates.
-This is cache conversion, not new encoder feature generation.
-
-### Environment correction
-
-The initial RDKit 2022.9.5 requirement did not reproduce frozen chemical
-similarities: three queries in Random-edge fold 0 differed. The reference
-environment uses RDKit 2026.3.3. Pinning that version restored the exact feature
-hash, channel rankings and published target ranks in that fold. Runtime checks
-now reject a different RDKit version rather than silently change predictions.
-No model formula or comparison tolerance was changed to conceal this mismatch.
-
-### Full frozen V66 replay
-
-All **15 folds / 1,995 query episodes** passed. For TP (S), TL (C), Dstar, B
-and F, the maximum score difference was **0.0**, all active-candidate ranks
-matched, and every reconstructed 32-feature tensor matched its reference hash.
-Final target ranks also matched the previously frozen per-query result table.
-All five channels' H@10, H@50 and MRR matched the manuscript metric archive
-within absolute tolerance 1e-12. The machine-readable record is
-[benchmark verification report](../reports/benchmark_verification.json).
+The full record is in the [benchmark verification report](../reports/benchmark_verification.json).
 
 | Split | Queries | Final H@10 | Final H@50 | Final MRR |
 |---|---:|---:|---:|---:|
@@ -61,19 +17,32 @@ within absolute tolerance 1e-12. The machine-readable record is
 | TF-50 | 706 | 0.131728 | 0.252125 | 0.070140 |
 | Ligand-Morgan-0.5 | 531 | 0.269303 | 0.404896 | 0.161544 |
 
-These are inference migration checks using original cached Dstar scores and
-gate weights, not newly trained benchmark results. Existing invalid chemical
-keys retain the reference implementation's no-structural-witness behavior;
-the migration does not silently repair or relabel the dataset.
+These checks use previously computed representation scores and fitted correction
+heads. They verify the ranking implementation, not independent biological
+validation, fresh training of all 45 dual encoders, or encoder feature generation.
 
-## Public release scope
+## Software and data checks
 
-- Frozen-score replay does not establish independent biological validation,
-  regenerate ESM2/MoLFormer features or retrain all 45 dual encoders.
-- Response edges, evidence-source records, candidate sequences and fixed splits
-  are provided in benchmarks/. Encoder features must be prepared separately;
-  the benchmark tables alone do not reproduce manuscript metrics.
-- Original software is licensed under MIT; third-party source terms are retained.
-- Additional curation, family-locality/null-analysis and comparator scripts are
-  not included in this model repository. A permanent code archive is not yet assigned.
-- Authentication files and local verification caches are excluded from version control.
+The test suite covers input validation, response transfer, candidate masking,
+training and refitting on synthetic inputs, ranking and evaluation. Benchmark
+data tests check sequence identities, file checksums and split consistency.
+
+The package was also installed in an isolated Python 3.10 environment, where
+the example, correction training and prediction commands completed successfully.
+The tested Linux CPU dependencies are recorded in
+[requirements-cpu-lock.txt](../requirements-cpu-lock.txt). This check does not
+establish numerical reproducibility on GPUs.
+
+RDKit 2026.3.3 is required for the benchmark chemical similarities; the runtime
+checks its version.
+
+## Available materials
+
+The [benchmark directory](../benchmarks/) contains response edges, evidence-source
+records, candidate sequences and fixed partitions. Encoder features require
+separate preparation, as described in the [input specification](ARTIFACTS.md).
+
+The repository provides the model implementation and its training and evaluation
+workflow. Additional curation, family-locality/null-analysis and comparator
+scripts are outside the current release. A permanent archive identifier has
+not yet been assigned.

@@ -1,1 +1,1 @@
-"""Versioned V66 model and fold configuration resources."""
+"""Model and fold configuration resources."""

@@ -101,13 +101,13 @@ def _load_sequence_similarity(source):
         other=yaml.safe_load(p.read_text())
         assert other['model']==cfg['model'] and other['training']==cfg['training']
     from src.unified_bscd_residual import FEATURE_NAMES
-    protocol={'schema':'ligand2tf-v66-1','architecture':'B','protein_encoder':'esm2_650m',
+    protocol={'schema':'ligand2tf-model-1','architecture':'B','protein_encoder':'esm2_650m',
               'model':cfg['model'],'training':cfg['training'],'seeds':[42,20260717,20260718],
               'feature_names':list(FEATURE_NAMES),'beta_grid':[0,0.25,0.5,0.75,1],
               'gate_epochs':30,'gate_learning_rate':0.01,'rdkit_version':'2026.3.3',
               'reference_configs':{str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in configs}}
     (dest/'configs').mkdir(exist_ok=True)
-    (dest/'configs/v66.json').write_text(json.dumps(protocol,indent=2)+'\n')
+    (dest/'configs/model.json').write_text(json.dumps(protocol,indent=2)+'\n')
     selections=root/'data/model_training/v66/results/efit_refit_three_method_replay_20260830/candidate_gate/validation_selections.jsonl'
     shutil.copyfile(selections,dest/'configs/fold_selections.jsonl')
     epochs=[]

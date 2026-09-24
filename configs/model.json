@@ -1,5 +1,5 @@
 {
-  "schema": "ligand2tf-v66-1",
+  "schema": "ligand2tf-model-1",
   "architecture": "B",
   "protein_encoder": "esm2_650m",
   "model": {
