@@ -1,4 +1,4 @@
-# ligand2TF
+# Response-Network Organization Enables Prioritization of Ligand-Responsive Prokaryotic Transcription Factors
 
 ligand2TF ranks candidate prokaryotic transcription factors for a query ligand
 by integrating known ligand-response relationships with molecular representations.
