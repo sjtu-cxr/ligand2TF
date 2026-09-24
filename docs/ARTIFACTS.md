@@ -22,7 +22,7 @@ verification bundles are not part of the published benchmark.
 `configs/model.json` locks the model settings and records the 45 source-config
 hashes. `configs/dstar_selected_epochs.json` records all 45 selected epochs.
 `configs/fold_selections.jsonl` preserves the 15 gate/beta selection records.
-These are not substitutes for the datasets or pretrained features.
+Use these configuration records together with the benchmark data and encoder features.
 
 ## Frozen feature archive
 

@@ -18,9 +18,8 @@ python -m pip install -r requirements-cpu-lock.txt
 python -m pip install --no-deps .
 ```
 
-The CPU lock was checked in a fresh virtual environment without inherited
-site packages. CUDA installation and numerical reproducibility on GPUs are
-not certified by that CPU installation check.
+The CPU lock was checked in a fresh Linux x86_64 CPU environment without
+inherited site packages.
 
 RDKit **2026.3.3** is required to reproduce the benchmark chemical similarities.
 The runtime checks this version. The model factory loads the manuscript
