@@ -66,14 +66,14 @@ gate weights, not newly trained benchmark results. Existing invalid chemical
 keys retain the reference implementation's no-structural-witness behavior;
 the migration does not silently repair or relabel the dataset.
 
-## Boundaries before public release
+## Public release scope
 
 - Frozen-score replay does not establish independent biological validation,
   regenerate ESM2/MoLFormer features or retrain all 45 dual encoders.
-- Source data, split manifests, feature caches and checkpoints remain local;
-  a reader cannot reproduce manuscript metrics from Git alone yet.
-- Pretrained weights will not be distributed. Public benchmark data access,
-  data redistribution review and a source license remain unresolved; users
-  must train their own weights. No download URL or license has been invented.
-- The GitHub repository remains private. Authentication files and private
-  verification inputs are excluded from version control.
+- Response edges, evidence-source records, candidate sequences and fixed splits
+  are provided in benchmarks/. Encoder features must be prepared separately;
+  the benchmark tables alone do not reproduce manuscript metrics.
+- Original software is licensed under MIT; third-party source terms are retained.
+- Additional curation, family-locality/null-analysis and comparator scripts are
+  not included in this model repository. A permanent code archive is not yet assigned.
+- Authentication files and local verification caches are excluded from version control.

@@ -89,9 +89,10 @@ python -m pytest tests -q
 
 ## Availability
 
-Pretrained model weights are not provided. Users must train their own weights.
-The biological benchmark data, split files, feature caches and third-party
-encoder assets are not included in this repository; the synthetic example can
-be run without them.
+The response dataset, evidence-source records, candidate sequences and fixed
+train/validation/test partitions are provided in [benchmarks/](benchmarks/).
+Its README describes the fields and source attribution. Encoder features must
+be prepared separately, as described in the training instructions.
 
-No software license has been assigned.
+The original software is released under the [MIT License](LICENSE). Third-party
+data and encoder assets retain their respective terms.

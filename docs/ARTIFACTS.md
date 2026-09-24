@@ -1,11 +1,10 @@
 # Data, weights and input contracts
 
-The repository contains code and frozen configuration records. It does not
-contain response data, sequences, model weights, or third-party pretrained
-encoder assets. The private local verification bundles are not tracked by Git.
-Pretrained ligand2TF weights are not distributed. Users must train their own
-weights using prepared data and features. No public benchmark data archive is
-currently linked from this repository.
+The repository contains code, model configurations, and the response data,
+evidence-source records, candidate sequences and fixed splits in
+[benchmarks/](../benchmarks/). Prepare encoder features separately and use the
+training commands to produce the model artifacts described below. Local cached
+verification bundles are not part of the published benchmark.
 
 ## Inputs and trained artifacts for benchmark reproduction
 

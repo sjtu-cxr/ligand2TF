@@ -7,6 +7,7 @@ name = "ligand2tf"
 version = "0.2.0"
 description = "Evidence-aware ranking of ligand-responsive prokaryotic transcription factors"
 readme = "README.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.10,<3.11"
 dependencies = ["numpy==1.26.4", "pandas==2.3.3", "torch==2.12.1", "rdkit==2026.3.3", "PyYAML==6.0.3"]
 
