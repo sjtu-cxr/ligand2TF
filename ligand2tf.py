@@ -1,4 +1,4 @@
-"""Portable V66 train, rank, evaluate and frozen-replay commands."""
+"""Portable train, rank, evaluate and frozen-replay commands."""
 import argparse
 import json
 from pathlib import Path

@@ -4,10 +4,10 @@
   "responders": 476,
   "candidate_proteins": 6457,
   "source_sha256": {
-    "c_light_positive_edges_v66.tsv": "4600b764ba75d7545c279c5dfc027c7279a13c26b98f948912a05cda3360d7da",
-    "edge_annotation_audit_v1.tsv": "4e16ed6f0f4cf2d4787ae4aa86aaa09f2b5aeb82e1f028210a1c8edbcb52df3b",
-    "curated_prokaryotic_tf_candidates_v4_with_md5.tsv": "869c738fe7f15bd618f295e7176e18a8475deb5b2f506f42d76fac064b1b2ff3",
-    "revised_pair_curation_evidence_v57.tsv": "771dec8b48e1ad6ed999262d51cb488e137f21091f780b7404db11d215d66fc3",
+    "response_edges_source.tsv": "4600b764ba75d7545c279c5dfc027c7279a13c26b98f948912a05cda3360d7da",
+    "family_annotations_source.tsv": "4e16ed6f0f4cf2d4787ae4aa86aaa09f2b5aeb82e1f028210a1c8edbcb52df3b",
+    "candidate_sequences_source.tsv": "869c738fe7f15bd618f295e7176e18a8475deb5b2f506f42d76fac064b1b2ff3",
+    "response_evidence_source.tsv": "771dec8b48e1ad6ed999262d51cb488e137f21091f780b7404db11d215d66fc3",
     "Random-edge/outer_edges.tsv": "02667d703cb5af59ce3b0c3ab99ddce55d4188ae4b5ba6175ae5a98af2db50fe",
     "TF-50/outer_edges.tsv": "d2b69c47eae41c73d466694c8d264416682a1129c024e4a6d3a39f0f434d067c",
     "Ligand-Morgan-0.5/fold_0/train.tsv": "aa55a98e9a03aa5c0c7d0304af9711ac0b15ffe57183321ff6ca104e0f27e115",
@@ -27,8 +27,8 @@
     "Ligand-Morgan-0.5/fold_4/test.tsv": "d941dd2557e56fdee27f147a7511122f042afa5eac1220ad5aaf8b16d7bbeaa6"
   },
   "sha256": {
-    "README.md": "efd4732f4cab22ad5961028b60e7c1ece162c60cdf046edd4d3eee9813d2d3ef",
-    "candidates.tsv": "3b0beca06770122f9a8828abe50b8c17335334b0a8c0ebb57d094a9a77a2f7f9",
+    "README.md": "287d4f1049238f9c3c258e425c5708d08f9a8ccab4ad4ae1214b17a5c5455143",
+    "candidates.tsv": "fec6c7a21a75904294902202983f544d9c1d17317322d8939fea8e805f326723",
     "response_evidence.tsv": "6755c2298ed7ff912ee46b15fea0e40f0080b055f9f173af1d25762a69c1a137",
     "responses.tsv": "63d003592a71860665b8329afbb3dd1d6bba7b769285ef2f5c99751e857aed88",
     "splits/Ligand-Morgan-0.5/fold_0/test.tsv": "13cfd4027ba988651672931c7867f9448c12e30605ffb225c2c08e9bc1030300",

@@ -73,7 +73,7 @@ def train_dstar(train_path,val_path,feature_path,output,*,seed,device='cpu',smok
     episodes=build_training_episodes(train,store.candidates,unknown_per_query=settings['unknown_per_query'],seed=seed)
     queries=build_evaluation_queries(train,val,store.candidates)
     model=make_dual_encoder()
-    provenance={'protocol':'V66','seed':seed,'smoke':smoke,
+    provenance={'protocol':PROTOCOL['schema'],'seed':seed,'smoke':smoke,
                 'train_sha256':sha256(train_path),'val_sha256':sha256(val_path),'feature_sha256':sha256(feature_path)}
     selected=train_fold(model,episodes,queries,store,output/'validation',device=device,
                         max_epochs=1 if smoke else settings['max_epochs'],validation_interval=1 if smoke else settings['validation_interval'],

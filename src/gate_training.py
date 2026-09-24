@@ -1,4 +1,4 @@
-"""Portable V66 gate training primitives extracted without numerical changes.
+"""Portable gate training primitives extracted without numerical changes.
 
 This module accepts already prepared fold-local arrays. It does not construct
 benchmark evidence or replace the validation/refit protocol.

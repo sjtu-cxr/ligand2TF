@@ -19,6 +19,10 @@ manuscript benchmarks, not a new curation or a new split assignment.
   validation and test responses for each fold.
 - `manifest.json`: file checksums and source-snapshot checksums.
 
+Source-snapshot checksums use descriptive identifiers rather than local file
+paths. Candidate-source labels beginning with `response_resource` identify
+records contributed by this study's curated response resource.
+
 `sequence_md5` is the MD5 of the exact protein sequence and joins all tables.
 `ligand_key` is the model identifier; explicit non-SMILES ions use an `ion:` key.
 Do not replace identifiers with display names or silently standardize the

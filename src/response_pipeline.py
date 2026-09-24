@@ -1,4 +1,4 @@
-"""Frozen V66 response reconstruction; extracted numerical functions.
+"""Frozen response reconstruction; extracted numerical functions.
 
 The sole adapted I/O hook loads an explicit candidate-aligned similarity cache.
 No original project imports or implicit data locations are used.

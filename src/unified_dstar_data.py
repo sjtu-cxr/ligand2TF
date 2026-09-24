@@ -41,11 +41,11 @@ FEATURE_ORDER = (
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MOLFORMER_PATH = (
     PROJECT_ROOT
-    / "data/model_training/v66/features/molformer_internal_v66_ligands.pkl"
+    / "data/reference/features/molformer_ligands.pkl"
 )
 DEFAULT_ESM_PATH = (
     PROJECT_ROOT
-    / "data/model_training/v66/features/"
+    / "data/reference/features/"
     "esm2_150M_curated_prokaryotic_tf_v4_regprecise_all.pkl"
 )
 DEFAULT_ECFP_PATH = PROJECT_ROOT / "data/processed/modeling/ecfp4_cache.pkl"

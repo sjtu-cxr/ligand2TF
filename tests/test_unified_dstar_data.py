@@ -695,23 +695,23 @@ def test_feature_store_rejects_wrong_cache_dimensions_at_load_time(tmp_path):
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 REAL_TF_ROOT = (
     PROJECT_ROOT
-    / "data/model_training/v66/results/unified_retrieval_v3/splits/TF-50"
+    / "data/reference/results/unified_retrieval_v3/splits/TF-50"
 )
 REAL_MORGAN_ROOT = (
     PROJECT_ROOT
-    / "data/model_training/v66/results/unified_retrieval_v3/"
+    / "data/reference/results/unified_retrieval_v3/"
     "morgan05_d_fusion/splits"
 )
 REAL_CANDIDATE_PATH = (
     PROJECT_ROOT
-    / "data/model_training/v66/candidates/"
+    / "data/reference/candidates/"
     "curated_prokaryotic_tf_candidates_v4_with_md5.tsv"
 )
 REAL_CACHE_PATHS = (
     PROJECT_ROOT
-    / "data/model_training/v66/features/molformer_internal_v66_ligands.pkl",
+    / "data/reference/features/molformer_ligands.pkl",
     PROJECT_ROOT
-    / "data/model_training/v66/features/"
+    / "data/reference/features/"
     "esm2_150M_curated_prokaryotic_tf_v4_regprecise_all.pkl",
     PROJECT_ROOT / "data/processed/modeling/ecfp4_cache.pkl",
     PROJECT_ROOT / "data/processed/modeling/ion_descriptors.json",
