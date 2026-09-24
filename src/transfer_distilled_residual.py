@@ -12,7 +12,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from scripts.pipeline.audit_transfer_distilled_stage_a_inputs import grouped_meta_fold
+from src.grouped_validation import grouped_meta_fold
 from src.unified_dstar_ensemble import rank_descending
 
 

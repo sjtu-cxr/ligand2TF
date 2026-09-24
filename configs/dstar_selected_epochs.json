@@ -1,0 +1,452 @@
+[
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 0,
+    "seed": 20260717,
+    "selected_epoch": 15,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 1,
+    "seed": 20260717,
+    "selected_epoch": 30,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 2,
+    "seed": 20260717,
+    "selected_epoch": 5,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 3,
+    "seed": 20260717,
+    "selected_epoch": 20,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 4,
+    "seed": 20260717,
+    "selected_epoch": 20,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 0,
+    "seed": 20260718,
+    "selected_epoch": 25,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 1,
+    "seed": 20260718,
+    "selected_epoch": 20,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 2,
+    "seed": 20260718,
+    "selected_epoch": 30,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 3,
+    "seed": 20260718,
+    "selected_epoch": 40,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 4,
+    "seed": 20260718,
+    "selected_epoch": 25,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 0,
+    "seed": 42,
+    "selected_epoch": 40,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 1,
+    "seed": 42,
+    "selected_epoch": 25,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 2,
+    "seed": 42,
+    "selected_epoch": 25,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 3,
+    "seed": 42,
+    "selected_epoch": 20,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Ligand-Morgan-0.5",
+    "fold": 4,
+    "seed": 42,
+    "selected_epoch": 15,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 0,
+    "seed": 20260717,
+    "selected_epoch": 15,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 1,
+    "seed": 20260717,
+    "selected_epoch": 45,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 2,
+    "seed": 20260717,
+    "selected_epoch": 25,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 3,
+    "seed": 20260717,
+    "selected_epoch": 35,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 4,
+    "seed": 20260717,
+    "selected_epoch": 20,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 0,
+    "seed": 20260718,
+    "selected_epoch": 25,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 1,
+    "seed": 20260718,
+    "selected_epoch": 30,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 2,
+    "seed": 20260718,
+    "selected_epoch": 35,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 3,
+    "seed": 20260718,
+    "selected_epoch": 35,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 4,
+    "seed": 20260718,
+    "selected_epoch": 30,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 0,
+    "seed": 42,
+    "selected_epoch": 35,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 1,
+    "seed": 42,
+    "selected_epoch": 25,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 2,
+    "seed": 42,
+    "selected_epoch": 35,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 3,
+    "seed": 42,
+    "selected_epoch": 35,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "Random-edge",
+    "fold": 4,
+    "seed": 42,
+    "selected_epoch": 30,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 0,
+    "seed": 20260717,
+    "selected_epoch": 50,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 1,
+    "seed": 20260717,
+    "selected_epoch": 15,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 2,
+    "seed": 20260717,
+    "selected_epoch": 15,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 3,
+    "seed": 20260717,
+    "selected_epoch": 15,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 4,
+    "seed": 20260717,
+    "selected_epoch": 10,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 0,
+    "seed": 20260718,
+    "selected_epoch": 30,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 1,
+    "seed": 20260718,
+    "selected_epoch": 15,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 2,
+    "seed": 20260718,
+    "selected_epoch": 20,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 3,
+    "seed": 20260718,
+    "selected_epoch": 10,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 4,
+    "seed": 20260718,
+    "selected_epoch": 5,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 0,
+    "seed": 42,
+    "selected_epoch": 20,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 1,
+    "seed": 42,
+    "selected_epoch": 10,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 2,
+    "seed": 42,
+    "selected_epoch": 40,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 3,
+    "seed": 42,
+    "selected_epoch": 20,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  },
+  {
+    "split": "TF-50",
+    "fold": 4,
+    "seed": 42,
+    "selected_epoch": 10,
+    "fit_roles": [
+      "train",
+      "val"
+    ]
+  }
+]

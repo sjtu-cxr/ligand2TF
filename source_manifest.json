@@ -1,5 +1,5 @@
 {
-  "scope": "V66 main-model core source candidate, not full benchmark reproduction",
+  "scope": "Historical v0.1 extraction origins, not an inventory or checksum lock of the current release. The research audit script was subsequently replaced by src.grouped_validation; only imports changed in the residual utility. Current extraction manifests and verification reports describe v0.2.",
   "files": [
     {
       "path": "src/benchmark_agnostic_transfer.py",

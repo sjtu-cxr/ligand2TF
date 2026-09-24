@@ -2,5 +2,6 @@
 numpy==1.26.4
 pandas==2.3.3
 torch==2.12.1
-rdkit==2022.9.5
+rdkit==2026.3.3
+PyYAML==6.0.3
 pytest==9.1.1

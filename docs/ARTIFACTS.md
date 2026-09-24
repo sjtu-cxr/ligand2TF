@@ -1,0 +1,107 @@
+# Data, weights and input contracts
+
+The repository contains code and frozen configuration records. It does not
+contain response data, sequences, model weights, or third-party pretrained
+encoder assets. The private local verification bundles are not tracked by Git.
+No public archive/DOI is available from this repository yet. An external
+publication archive still requires author approval and redistribution review.
+
+## What a complete V66 artifact release needs
+
+- Exact-sequence candidate library and candidate order (6,457 proteins).
+- Curated ligand-response edges (874), ligand identities and provenance.
+- Original Random-edge, TF-50 and ligand-component train/validation/test
+  manifests, with content hashes. Keep exact split-unit grouping intact.
+- Frozen ESM2-650M and MoLFormer features, Morgan fingerprints, accepted-ion
+  descriptors, and their input identities/preprocessing provenance.
+- Candidate-versus-candidate MMseqs output and sequence lengths.
+- Three training-only and three refit Dstar checkpoints per fold, plus the
+  selected candidate-gate heads and their selection records.
+
+`configs/v66.json` locks the model settings and records the 45 source-config
+hashes. `configs/dstar_selected_epochs.json` records all 45 selected epochs.
+`configs/fold_selections.jsonl` preserves the 15 gate/beta selection records.
+These are not substitutes for the datasets or pretrained features.
+
+## Frozen feature archive
+
+`features.npz` is loaded with `allow_pickle=False`. Its keys are:
+
+| Key | Shape/type |
+|---|---|
+| `ligand_keys` | unique string array of length L |
+| `candidate_hashes` | unique exact-sequence identities, length P |
+| `molformer` | L × 768, finite float32 |
+| `ecfp` | L × 2048, finite float32 |
+| `ion` | L × 10, finite float32 |
+| `is_ion` | L, boolean |
+| `esm` | P × 1280, finite float32 |
+
+The tensors must match the existing feature-store representation, including
+zero padding for inactive ligand branches and the accepted-ion descriptor
+order. Do not silently re-embed with a different encoder checkpoint, pooling,
+tokenizer, precision or SMILES standardization procedure.
+
+The maintainer can convert the original trusted caches without changing their
+values using:
+
+```bash
+python tools/pack_reference_features.py --reference-root /path/to/research --bundles data/verification_v66 --output data/features.npz --trust-local-pickle-caches
+```
+
+This conversion tool deliberately requires an explicit trust acknowledgement
+because the original caches are pickle files. Runtime feature packs and gate
+weights use non-pickled NPZ. The existing low-level training implementation
+also writes PyTorch validation checkpoints; use only your own trusted ones.
+
+## Sequence and chemical transfer
+
+`prepare-protein` expects `sequence_md5` and `protein_sequence` in the
+candidate TSV. The alignment input uses standard 12-column m8: query, target,
+percentage identity, alignment length, mismatches, gap openings, query start,
+query end, target start, target end, E value, bit score. The cache stores
+directional `identity × min(alignment/query_length, alignment/target_length)`
+as float32. Retrieval takes the maximum over directions and fitting responders.
+Unreported alignments are finite zero, not missing witness evidence.
+
+The chemical query identifier is canonical SMILES or the accepted `ion:` key.
+The final TL channel uses radius-2, 2048-bit Morgan similarity. Other fingerprint
+helpers retained in the historical utility are not the selected main channel.
+RDKit 2026.3.3 is required. Invalid/non-SMILES keys have no structural transfer
+witness; they must not be silently substituted with another molecule.
+
+## Portable response bundle
+
+`bundle.json` contains schema `ligand2tf-bundle-1`, split/fold/stage, beta,
+seed order, query IDs, split units, global candidate IDs, and optional
+`relevant_hashes` for evaluation. Its `files` dictionary points to three
+relative paths with SHA256 values:
+
+- `fit_edges`: TSV with `ligand_key` and `sequence_md5`.
+- `protein_similarity`: NPZ with ordered `candidate_hashes` and square float32
+  `scores`.
+- `dstar_scores`: NPZ with `scores` of shape 3 × queries × candidates. The
+  seed order is 42, 20260717, 20260718. Active scores must be finite; fitting
+  responders may be NaN. No labels are used to derive these scores.
+
+The bundle builder accepts three single-seed archives emitted by `score-dstar`
+and checks query/candidate order before stacking. Runtime derives its candidate
+mask from the fitting edges, checks hashes, and rejects held-out/fitting overlap.
+Hashes establish artifact identity, not proof that a third-party provider used
+the correct training data; preserve the manifests of training and refitting.
+
+## Gate checkpoint
+
+`checkpoint.json` records split/fold, beta, feature order, selected configuration,
+seed order, state count and SHA256 of `weights.npz`. A selected gate has three
+state dictionaries stored as `seed_index:parameter_name` arrays. A backbone
+fallback has zero states. No object-array or Python pickle loading is used.
+
+## Reproduction boundary
+
+Frozen-score/checkpoint replay verifies migration of response construction,
+masking, calibration, features, correction and ranking. The dual-encoder
+training/refit and scoring entry points additionally have synthetic execution
+tests. Neither result establishes that all 45 Dstar models have been retrained
+from scratch, or that raw ESM2/MoLFormer feature generation has been reproduced.
+Use the verification report for the exact tested scope.

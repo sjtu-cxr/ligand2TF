@@ -1,6 +1,6 @@
 {
   "output": "src/gate_training.py",
-  "output_sha256": "0aeba46481c033061644f4c64bce38d5f114667ce1509cf1342bbab7e75545cb",
+  "output_sha256": "7bed2d49b1d0863179f67ccd939c6e27b10bc3637cdbf93d60caf7a50509f82c",
   "inputs": [
     {
       "path": "scripts/pipeline/train_transfer_distilled_residual_stage_a.py",
@@ -37,5 +37,5 @@
       ]
     }
   ],
-  "transformation": "Unchanged definition source segments; portable imports only."
+  "transformation": "Unchanged definition source segments; portable imports only. Grouping helpers now come from src.grouped_validation rather than the research audit script."
 }

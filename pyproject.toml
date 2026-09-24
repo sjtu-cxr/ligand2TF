@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ligand2tf"
+version = "0.2.0"
+description = "Evidence-aware ranking of ligand-responsive prokaryotic transcription factors"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = ["numpy==1.26.4", "pandas==2.3.3", "torch==2.12.1", "rdkit==2026.3.3", "PyYAML==6.0.3"]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1"]
+
+[project.scripts]
+ligand2tf = "ligand2tf:main"
+
+[tool.setuptools]
+py-modules = ["ligand2tf"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "configs*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+configs = ["*.json", "*.jsonl"]

@@ -1,78 +1,73 @@
 # ligand2TF
 
-Source code for prioritizing ligand-responsive prokaryotic transcription
-factors by combining response evidence with molecular representations.
+Prioritize ligand-responsive prokaryotic transcription factors by combining
+protein- and ligand-side response evidence with molecular representations.
 
-## Release status
+This repository implements the V66 candidate-level gated model used in the
+manuscript. It reconstructs fold-local response neighborhoods, masks known
+fitting responders, builds the availability-aware backbone and 32 correction
+features, and ranks the active protein library. The dual encoder uses
+Architecture B with frozen ESM2-650M and MoLFormer features.
 
-This is a **private source-release candidate** for the V66 main model. The
-core numerical modules and self-contained tests have been extracted from
-the research workspace. The full benchmark command-line workflow and its
-data/checkpoint distribution are not yet packaged. This repository must not
-yet be described as a complete reproduction release or a pretrained predictor.
+The repository remains **private** while the external data/weight archive and
+source license are prepared. Cloning it does not download V66 data or weights.
 
-GitHub repository: [sjtu-cxr/ligand2TF](https://github.com/sjtu-cxr/ligand2TF).
-The repository is initially private while the release package is completed.
+## Install and try
 
-## Model components
-
-- `src/unified_chemical_transfer.py`: chemical response transfer.
-- `src/benchmark_agnostic_transfer.py` and
-  `src/unified_transfer_first_routing.py`: legal-witness availability and
-  transfer-first routing, with representation fallback.
-- `src/unified_dstar_model.py`: dual-encoder architectures.
-- `src/unified_dstar_data.py` and `src/unified_dstar_training.py`: feature and
-  split contracts, training, checkpoint selection, and full-library evaluation.
-- `src/unified_bscd_residual.py`: the 32 candidate-level correction features.
-- `src/candidate_gated_top10.py`: bounded gated correction, weighted ranking
-  loss, and regularization.
-- `src/gate_training.py`: portable gate fitting, full-library scoring,
-  constrained configuration selection, grouped out-of-fold predictions,
-  three-seed rank aggregation, and query-level metrics.
-- `src/fit_candidate_mask.py`: fit-response masking and ranking metrics.
-- `src/unified_dstar_ensemble.py`: deterministic candidate ranking and score
-  archives; equal scores are ordered by candidate hash.
-
-The historical `src` module namespace is retained to avoid changing numerical
-implementation during extraction. Some modules contain reusable historical
-helpers; their presence does not identify them as part of the final model.
-The audit module under `scripts/pipeline` is an import dependency, not an
-end-to-end release entry point.
-
-Gate functions consume fold-local arrays: features of shape
-`(n_queries, n_candidates, 32)`, backbone scores and boolean eligibility masks
-of shape `(n_queries, n_candidates)`, and boolean labels for training only.
-Candidate hashes and query IDs must align with their corresponding axes.
-See `tests/test_gate_training.py` for a runnable synthetic fit/score example:
+Python 3.10 is required. Install and run a small synthetic workflow:
 
 ```bash
-python -m pytest tests/test_gate_training.py -q
+python -m pip install .
+ligand2tf example --output data/example
+ligand2tf train-gate --bundle data/example/validation/bundle.json --output data/example/head --smoke
+ligand2tf predict --bundle data/example/test/bundle.json --checkpoint data/example/head --output data/example/ranks.tsv
 ```
 
-The synthetic example checks interfaces and numerical validity, not biological
-prediction quality. Prediction does not require labels. Never include held-out
-responses when constructing training evidence or selecting configurations.
+The example checks execution, not biological prediction quality. Omit --smoke
+for formal 30-epoch gate training. **RDKit 2026.3.3 is locked:** older versions
+can change Morgan similarities and final rankings. Use the release factory
+and configuration, not historical defaults of the low-level model classes.
 
-## Run the core tests
+## Workflows
 
-Use Python 3.10 and run commands from the repository root:
+- prepare-protein: build the fixed-order identity/coverage cache from MMseqs.
+- train-dstar: select on validation data, then refit on train + validation.
+- score-dstar: generate candidate scores from explicit features and weights.
+- bundle: align three seed-score archives with a fitting response graph.
+- train-gate: grouped out-of-fold head selection and final head fitting.
+- predict / evaluate: rank candidates or compute query-level metrics.
+- verify: compare migrated features, scores and ranks with frozen references.
+
+See [usage](docs/USAGE.md) for commands and the distinction between
+training-only validation weights and refitted test weights. See
+[artifact contracts](docs/ARTIFACTS.md) for schemas, provenance, and
+local conversion of existing trusted feature caches.
+
+## Verification scope
+
+Unit tests and synthetic workflows are separate from frozen V66 replay.
+The latter reconstructs response evidence and features from the fitting graph
+and fixed molecular similarities, applies original gate weights to cached
+Dstar scores, and compares all active candidate ranks. It does **not** retrain
+all 45 dual encoders or regenerate ESM2/MoLFormer features. Current results
+are in [release status](docs/RELEASE_STATUS.md).
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
+python -m pip install 'pytest==9.1.1'
 python -m pytest tests -q
 ```
 
-The version list records the environment used during extraction. A fresh
-dependency installation on other platforms is not yet verified. Tests use
-synthetic inputs; passing them does not establish reproduction of manuscript
-metrics. See [release status](docs/RELEASE_STATUS.md) for remaining work.
+## Layout
 
-## Data, weights, and rights
+src/ contains model and workflow code, configs/ the locked model/fold settings,
+tests/ executable checks, and tools/ maintainer-only extraction utilities.
+Normal package use does not require the original research project.
+Extraction manifests record reference definitions and hashes; source_manifest.json
+is an archival record of the initial v0.1 extraction.
 
-No response dataset, sequence collection, third-party encoder weights, trained
-checkpoint, manuscript, cluster log, or authentication file is included.
-The source manifest records checksums of the original files. Publication
-licensing and data/weight redistribution terms require author review before
-public release; no open-source license has been applied at this stage.
+## Availability
+
+Repository: [sjtu-cxr/ligand2TF](https://github.com/sjtu-cxr/ligand2TF).
+No open-source license or public data DOI is asserted at this stage. Dataset,
+third-party encoder and checkpoint redistribution terms need review before
+public release. Credentials, research logs and manuscript files are excluded.

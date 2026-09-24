@@ -1,0 +1,58 @@
+{
+  "output": "src/response_pipeline.py",
+  "sha256": "f8df285a8c3c086e171cfdfa8f23f2be080896e7b48bcd8370e9ed633fce7a0f",
+  "inputs": [
+    {
+      "path": "scripts/pipeline/build_random_framework_three_split_inputs.py",
+      "sha256": "6bee8c91bb2f39c12d9ebbad8226032a84990bb29bd1940eb6e18e61bbdcbe49",
+      "definitions": [
+        "QueryEvidence",
+        "CompactSequenceSimilarity",
+        "FoldEvidenceSource",
+        "DStarSeedOverride",
+        "apply_dstar_seed_override",
+        "ActiveRandomFrameworkRow",
+        "RandomFrameworkInputs",
+        "_edge_pairs",
+        "_similarity_value",
+        "_chemical_tables",
+        "build_query_evidence",
+        "_vector",
+        "_boolean_vector",
+        "_calibrated_dstar",
+        "build_active_row",
+        "protein_transfer_raw",
+        "_validate_structure_weight",
+        "_align_structure_similarity",
+        "build_random_framework_inputs"
+      ]
+    },
+    {
+      "path": "scripts/pipeline/build_unified_random_edge_full_inputs.py",
+      "sha256": "a86f88a8975d26c066c1c4cf28638850868641072ac37b4623249954ed58e375",
+      "definitions": [
+        "_pure_transfer_scores"
+      ]
+    },
+    {
+      "path": "src/structure_response_transfer.py",
+      "sha256": "350efb847cfe879febe43ae62f5d3f414a8567c2366470ee58b4042821ada6b3",
+      "definitions": "whole file"
+    },
+    {
+      "path": "src/unified_random_edge_full_baselines.py",
+      "sha256": "755ba384349f9a5e9b81aa843c5904c476bed6612e3e0a420cbbb05ba773d6db",
+      "definitions": "whole file"
+    }
+  ],
+  "grouped_validation": {
+    "source": "scripts/pipeline/audit_transfer_distilled_stage_a_inputs.py",
+    "source_sha256": "1021a5157101490e5cbe68cba037decdb72c8b385e4595e6114416ebc94b8ef2",
+    "definitions": [
+      "_require",
+      "atomic_split_units",
+      "grouped_meta_fold"
+    ],
+    "output_sha256": "12379de46c810e38e620e4872e8c684ec7b831286f7de82ce3088bd38a40a964"
+  }
+}
