@@ -1,4 +1,4 @@
-# Response-Network Organization Enables Prioritization of Ligand-Responsive Prokaryotic Transcription Factors
+# Integrating Response-Network Organization and Molecular Representations to Prioritize Ligand-Responsive Prokaryotic Transcription Factors
 
 Code accompanying the manuscript of the same title.
 
