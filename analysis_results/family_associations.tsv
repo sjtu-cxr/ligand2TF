@@ -1,0 +1,3 @@
+locality	recovery	n	rho	p_two_sided
+protein_locality	TP_H10	8	0.8571428571428572	0.006530017254715292
+chemical_locality	TL_H10	8	0.11904761904761905	0.7788857260523797

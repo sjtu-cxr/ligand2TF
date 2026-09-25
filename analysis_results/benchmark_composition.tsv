@@ -1,0 +1,16 @@
+benchmark	outer_fold	split_unit	held_out_components	query_instances	positive_edges	candidate_background	active_candidate_min	active_candidate_mean	active_candidate_max	train_test_overlap_failures	inner_overlap_failures
+Ligand-Morgan-0.5	0	Morgan_r2_2048_Tanimoto_connected_components	47.0	103	158	6457	6457.0	6457.0	6457.0	0	0
+Ligand-Morgan-0.5	1	Morgan_r2_2048_Tanimoto_connected_components	47.0	111	157	6457	6457.0	6457.0	6457.0	0	0
+Ligand-Morgan-0.5	2	Morgan_r2_2048_Tanimoto_connected_components	48.0	109	158	6457	6457.0	6457.0	6457.0	0	0
+Ligand-Morgan-0.5	3	Morgan_r2_2048_Tanimoto_connected_components	48.0	114	157	6457	6457.0	6457.0	6457.0	0	0
+Ligand-Morgan-0.5	4	Morgan_r2_2048_Tanimoto_connected_components	49.0	94	158	6457	6457.0	6457.0	6457.0	0	0
+Random-edge	0	response_edge		158	175	6457	6446.0	6456.06329113924	6457.0	0	0
+Random-edge	1	response_edge		153	175	6457	6444.0	6455.986928104575	6457.0	0	0
+Random-edge	2	response_edge		152	175	6457	6446.0	6455.953947368421	6457.0	0	0
+Random-edge	3	response_edge		145	175	6457	6447.0	6455.855172413793	6457.0	0	0
+Random-edge	4	response_edge		150	174	6457	6446.0	6455.94	6457.0	0	0
+TF-50	0	MMseqs2_50_identity_cluster	95.0	170	206	6457	6445.0	6456.076470588236	6457.0	0	0
+TF-50	1	MMseqs2_50_identity_cluster	84.0	160	203	6457	6448.0	6456.325	6457.0	0	0
+TF-50	2	MMseqs2_50_identity_cluster	70.0	115	135	6457	6444.0	6456.173913043478	6457.0	0	0
+TF-50	3	MMseqs2_50_identity_cluster	93.0	151	188	6457	6444.0	6456.119205298013	6457.0	0	0
+TF-50	4	MMseqs2_50_identity_cluster	63.0	110	142	6457	6444.0	6455.927272727273	6457.0	0	0

@@ -1,0 +1,42 @@
+record_type	method	benchmark	outer_fold	parameter	value	selection_status	note
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	0.0	max_depth	8	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	0.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	0.0	min_samples_leaf	5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	0.0	unlabeled_weight	0.05	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	1.0	max_depth		grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	1.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	1.0	min_samples_leaf	5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	1.0	unlabeled_weight	0.05	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	2.0	max_depth		grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	2.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	2.0	min_samples_leaf	5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	2.0	unlabeled_weight	0.1	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	3.0	max_depth		grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	3.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	3.0	min_samples_leaf	5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	3.0	unlabeled_weight	0.1	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	4.0	max_depth	8	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	4.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	4.0	min_samples_leaf	20	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	Ligand-Morgan-0.5	4.0	unlabeled_weight	0.1	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	0.0	max_depth	8	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	0.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	0.0	min_samples_leaf	20	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	0.0	unlabeled_weight	0.1	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	1.0	max_depth	8	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	1.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	1.0	min_samples_leaf	5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	1.0	unlabeled_weight	0.1	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	2.0	max_depth	4	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	2.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	2.0	min_samples_leaf	5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	2.0	unlabeled_weight	0.05	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	3.0	max_depth	4	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	3.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	3.0	min_samples_leaf	5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	3.0	unlabeled_weight	0.1	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	4.0	max_depth	4	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	4.0	max_features	0.5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	4.0	min_samples_leaf	5	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	TF-50	4.0	unlabeled_weight	0.1	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator
+comparator_configuration	extratrees_pu_bagging	both		method_specification	fixed formal specification	grouped outer validation; fold-specific selected configuration	nonlinear PU comparator

@@ -1,0 +1,23 @@
+{
+  "schema": "nonlinear_direct_pair_mlp_v1",
+  "split": "TF-50",
+  "outer_fold": 2,
+  "selected_config": {
+    "hidden_dims": [
+      32,
+      8
+    ],
+    "dropout": 0.1,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001
+  },
+  "selection": "validation H@10, MRR, nDCG@10",
+  "fit_edges": "train+validation",
+  "candidate_mask": "R_fit",
+  "features": "frozen direct ligand-protein features only",
+  "seeds": [
+    42,
+    20260717,
+    20260718
+  ]
+}

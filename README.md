@@ -94,5 +94,9 @@ train/validation/test partitions are provided in [benchmarks/](benchmarks/).
 Its README describes the fields and source attribution. Encoder features must
 be prepared separately, as described in the training instructions.
 
+Numerical results for the manuscript and Supporting Information are available
+in [analysis_results/](analysis_results/), including retrieval metrics, response
+organization analyses, case-specific ranks, and model-selection records.
+
 The original software is released under the [MIT License](LICENSE). Third-party
 data and encoder assets retain their respective terms.
