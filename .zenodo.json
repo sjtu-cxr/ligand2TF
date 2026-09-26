@@ -1,0 +1,24 @@
+{
+  "title": "Integrating Response-Network Evidence and Molecular Representations to Prioritize Ligand-Responsive Prokaryotic Transcription Factors: code and data",
+  "description": "Code, curated response data, candidate protein sequences, evaluation partitions, and analysis results accompanying the manuscript Integrating Response-Network Evidence and Molecular Representations to Prioritize Ligand-Responsive Prokaryotic Transcription Factors. The original software is released under the MIT License; third-party data and assets retain their respective terms, as documented in the repository.",
+  "version": "1.0.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "creators": [
+    {"name": "Cheng, Xiaoran", "affiliation": "Shanghai Jiao Tong University"},
+    {"name": "Zhang, Liang", "affiliation": "Shanghai Jiao Tong University"},
+    {"name": "Jiang, Fan", "affiliation": "Shanghai Jiao Tong University"},
+    {"name": "Li, Mingchen", "affiliation": "Shanghai Jiao Tong University"},
+    {"name": "Yu, Yuanxi", "affiliation": "Shanghai Jiao Tong University"},
+    {"name": "Hong, Liang", "affiliation": "Shanghai Jiao Tong University; Shanghai Artificial Intelligence Laboratory"}
+  ],
+  "keywords": [
+    "ligand-responsive transcription factors",
+    "transcriptional regulation",
+    "transcription factor-based biosensors",
+    "response networks",
+    "molecular representations",
+    "learning to rank"
+  ]
+}
